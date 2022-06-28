@@ -12,8 +12,8 @@ class Event(models.Model):
     date = models.DateTimeField('Event Date')
     content = models.TextField()
     location = models.CharField(max_length=120)
-    attendees = models.CharField(User, related_name='event_attendees', blank=True)
-    image = models.CloudinaryField('image', default='placeholder')
+    attendees = models.ManyToManyField(User, related_name='event_attendees', blank=True)
+    image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
@@ -32,7 +32,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(dafult=False)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['created_on']
