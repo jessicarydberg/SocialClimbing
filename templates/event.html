@@ -14,7 +14,6 @@
                 <p class="post-subtitle"> {{ event.author }} | {{ event.date }} | {{ event.location }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in event.image.url %}
                 <img src="/static/images/climber1.jpg" width="100%">
                 {% else %}
@@ -42,13 +41,13 @@
                                {% if attended %}
 
                                 <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
-                                    Attend
+                                    <strong>Attending</strong>
                                 </button>
-
-                               {% else %}
-
-                               <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
-                                <strong>Attending</strong>
+                                
+                                {% else %}
+                                
+                                <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
+                                    Attend
                                 </button>
 
                                {% endif %}
