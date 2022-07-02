@@ -7,6 +7,10 @@ a, .nav-link {
     color: black;
 }
 
+a:hover, .nav-link:hover {
+    color: lightgray;
+}
+
 .brand {
     font-family: Lato, sans-serif;
     font-size: 2rem;
@@ -23,12 +27,8 @@ a, .nav-link {
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #212529;
 }
-/* 
-.main-bg {
-    background-color: #adc7a7;
-} */
 
 .card {
     border: none;
@@ -55,7 +55,7 @@ img {
 }
 
 .author {
-    color: white;
+    color:  lightgray;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -71,7 +71,7 @@ img {
 
 .masthead-text {
     background-color: #445261;
-    color: white;
+    color:  lightgray;
     position: relative;
 }
 
@@ -100,7 +100,7 @@ img {
 
 .post-link:hover,
 .page-link {
-    color: #21701b;
+    color: lightgray;
 }
 
 .post-title {
@@ -114,36 +114,36 @@ img {
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    background-color: lightgray;
+    color: black;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: lightgray;
 }
 
 .link {
-    color: #23BBBB;
+    color: lightgray;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: lightgray;
     text-decoration: underline;
 }
 
 .btn-like {
-    color: #21701b;
+    color: lightgray;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #21701b;
+    color: lightgray;
     background: transparent;
     border: none;
 }

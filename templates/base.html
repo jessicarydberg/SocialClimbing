@@ -29,7 +29,7 @@
             <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Social Climbers</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -38,19 +38,19 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
                 <span class="navbar-text">
-                    climbing adventures
+                    Adventures for climbers
                 </span>
             </div>
         </div>
@@ -71,5 +71,5 @@
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
 </body>
-
+<script src="https://kit.fontawesome.com/cce6127ea2.js" crossorigin="anonymous"></script>
 </html>
