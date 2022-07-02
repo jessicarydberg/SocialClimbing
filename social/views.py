@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Event
 from .forms import CommentForm
 
@@ -64,3 +65,14 @@ class EventDetail(View):
             },
         )
 
+class PostAttend(View):
+
+    def post(self, request, slug):
+        event = get_object_or_404(Event, slug=slug)
+
+        if event.attendees.filter(id=request.user.id).exists():
+            event.attendees.remove(request.user)
+        else:
+            event.attendees.add(request.user)
+        
+        return HttpResponseRedirect(reverse('event_detail', args=[slug]))
