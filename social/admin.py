@@ -15,5 +15,9 @@ class EventAdmin(SummernoteModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_filter = ('approved', 'event')
-    list_display = ( 'created_on', 'event', 'body', 'name', 'approved')
+    list_display = ('created_on', 'event', 'body', 'name', 'approved')
     search_fields = ('approved', 'event', 'name',)
+    actions = ['approved_comments']
+
+    def approved_comments(self, request, queryset):
+        queryset.update(approved=True)
