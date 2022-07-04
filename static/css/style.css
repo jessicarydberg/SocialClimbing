@@ -24,6 +24,7 @@ a:hover, .nav-link:hover {
 
 .light-bg {
     background-color: #ffffff;
+    border: solid black;
 }
 
 .dark-bg {
@@ -37,9 +38,15 @@ a:hover, .nav-link:hover {
     border-radius: 20%;
 }
 
+.comments {
+    border: inset;
+}
+
 img {
     border: solid;
     filter: drop-shadow(2px 4px 6px black) sepia(0.5);
+    max-height: 25rem;
+    max-width: 25rem;
 }
 
 .image-container {
@@ -62,7 +69,6 @@ img {
 
 .masthead {
     margin-top: 10px;
-    overflow: hidden;
     position: relative;
     display: inline-block;
     height: 33vh;
@@ -70,7 +76,6 @@ img {
 }
 
 .masthead-text {
-    background-color: #445261;
     color:  lightgray;
     position: relative;
 }
@@ -87,7 +92,6 @@ img {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -110,7 +114,6 @@ img {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
 }
 
 .btn-signup {
@@ -136,7 +139,6 @@ img {
 }
 
 .btn-like {
-    color: lightgray;
     border: none;
     background: transparent;
 }

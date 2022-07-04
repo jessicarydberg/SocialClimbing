@@ -5,34 +5,29 @@
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
+            <div class="col-md-6">
                 <h1 class="post-title">
                     {{ event.title }}
                 </h1>
-                <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle"> {{ event.author }} | {{ event.date }} | {{ event.location }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in event.image.url %}
+                {% if 'placeholder' in event.image.url %}
                 <img src="/static/images/climber1.jpg" width="100%">
                 {% else %}
-                <img src="{{ event.image }}" width="100%">
+                <img src="{{ event.image.url }}" width="100%">
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
+<div class="container light-bg">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">{{ event.content | safe }}</p>
+                <p class="card-text">{{ event.content | safe }}</p>
                 <div class="row">
-
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
@@ -54,17 +49,16 @@
                             </form>
                             {% else %}
 
-                            <span class="text-secondary">
+                            <span>
                                 <i class="far fa-heart"></i>
                             </span>
                             {% endif %}
                         </strong>
-                        <span class="text-secondary"></i>{{ event.number_of_attendees }} </span>
+                        <span>{{ event.number_of_attendees }}</span>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
+                        <strong><i class="far fa-comments"></i>
                             {{ total_comments }}
                         </strong>
                         {% endwith %}
@@ -82,21 +76,16 @@
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Comments:</h3>
             <div class="card-body">
-                <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
+                        <span class="font-weight-normal">
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
