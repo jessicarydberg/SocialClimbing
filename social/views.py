@@ -65,6 +65,7 @@ class EventDetail(View):
             },
         )
 
+
 class PostAttend(View):
 
     def post(self, request, slug):
@@ -76,3 +77,4 @@ class PostAttend(View):
             event.attendees.add(request.user)
         
         return HttpResponseRedirect(reverse('event_detail', args=[slug]))
+
