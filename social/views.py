@@ -115,6 +115,6 @@ class EditEvent(UpdateView):
 
     model = Event
     form_class = EventForm
-    template_name_suffix = '_update_form'
-    template_name = 'event_update_form.html'
+    template_name_suffix = '_edit_form'
+    template_name = 'event_edit_form.html'
     success_url = '/'
