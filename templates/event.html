@@ -96,9 +96,9 @@
 
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
+                    Your comment was submitted Successfully!!
                 </div>
-                {% else %}
+                {% endif %}
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em">
@@ -107,7 +107,6 @@
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </form>
                 
-                {% endif %}
                 {% endif %}
             </div>
         </div>

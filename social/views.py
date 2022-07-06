@@ -20,7 +20,7 @@ class EventDetail(View):
     def get(self, request, slug):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
-        comments = event.comments.filter(approved=True).order_by('created_on')
+        comments = event.comments.order_by('created_on')
         attended = False
         if event.attendees.filter(id=self.request.user.id).exists():
             attended = True
@@ -40,7 +40,7 @@ class EventDetail(View):
     def post(self, request, slug):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
-        comments = event.comments.filter(approved=True).order_by('created_on')
+        comments = event.comments.order_by('created_on')
         attended = False
         if event.attendees.filter(id=self.request.user.id).exists():
             attended = True
@@ -48,7 +48,6 @@ class EventDetail(View):
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.event = event
