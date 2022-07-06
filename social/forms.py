@@ -1,6 +1,5 @@
 from django import forms
 from .models import Comment, Event
-from django_summernote.admin import SummernoteModelAdmin
 
 
 class CommentForm(forms.ModelForm):
@@ -9,25 +8,29 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-class EventForm(forms.ModelForm, SummernoteModelAdmin):
+class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ('title', 'date', 'location', 'content', 'image')
-        summernote_fields = ('content')
+        fields = ('author', 'title', 'date', 'location', 'content', 'excerpt')
         widgets = {
-            'title': forms.TextInput(attrs={
-                'placeholder': 'Title'
+            'author': forms.Select(attrs={
+                'class': 'form-control', 'placeholder': 'Author'
                 }),
-            'date': forms.TextInput(attrs={
-                'placeholder': 'Date'
+            'title': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Title'
+                }),
+            'date': forms.DateInput(attrs={
+                'class': 'form-control', 'placeholder': 'YYYY-MM-DD HH:MM:SS'
                 }),
             'location': forms.TextInput(attrs={
-                'placeholder': 'Location'
+                'class': 'form-control', 'placeholder': 'Location',
                 }),
-            'content': forms.TextInput(attrs={
-                'placeholder': 'Description'
+            'content': forms.Textarea(attrs={
+                'class': 'form-control', 'placeholder': 'Description',
+                'max-width': '200px', 'max-heigth': '200px'
                 }),
-            'image': forms.TextInput(attrs={
-                'placeholder': 'Image'
+            'excerpt': forms.Textarea(attrs={
+                'class': 'form-control', 'placeholder': 'Excerpt',
+                'max-width': '50px', 'max-heigth': '100px'
                 }),
         }

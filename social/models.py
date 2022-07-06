@@ -12,8 +12,8 @@ class Event(models.Model):
     date = models.DateTimeField('Event Date')
     content = models.TextField()
     location = models.CharField(max_length=120)
-    attendees = models.ManyToManyField(User, related_name='event_attendees', blank=True)
-    image = CloudinaryField('image', default='placeholder')
+    attendees = models.ManyToManyField(User, related_name='event_attendees')
+    image = CloudinaryField('image', default='placeholder', blank=True)
     excerpt = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
 

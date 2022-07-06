@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Event
 from .forms import CommentForm, EventForm
+from django.utils.text import slugify
 
 
 class EventList(generic.ListView):
@@ -84,16 +85,20 @@ class AddEvent(View):
     def get(self, request):
         event_form = EventForm(request.POST, request.FILES)
         return render(request, 'add_event.html', {
-            'form': event_form, 'submitted': False
+            'form': event_form
             })
 
     def post(self, request):
         submitted = False
-        event_form = EventForm(request.POST, request.FILES)
+        event_form = EventForm(request.POST)
         if event_form.is_valid():
-            event_form.instance.author = request.user.username
+            print(event_form)
+            event_form.instance.slug = slugify(event_form.instance.title)
+            event_form.instance.status = 1
             event_form.save()
             submitted = True
+        else:
+            print("Error")
 
         return render(request, 'add_event.html', {
             'form': event_form, 'submitted': submitted
