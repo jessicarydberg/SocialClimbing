@@ -1,5 +1,25 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
-Please add an event
+{% block content %}
+
+<h3>Add Event</h3>
+<br/><br/>
+
+{% if submitted %}
+    <p>Your Event Was Submitted Successfully!</p>
+{% else %}
+
+    <form method="POST" style="margin-top: 1.3em">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        
+        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+
+    </form>
+
+{% endif %}
+
+<br/><br/>
 {% endblock content %}

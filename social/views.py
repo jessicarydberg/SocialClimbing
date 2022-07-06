@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Event
-from .forms import CommentForm
+from .forms import CommentForm, EventForm
 
 
 class EventList(generic.ListView):
@@ -14,7 +14,7 @@ class EventList(generic.ListView):
 
 class EventDetail(View):
 
-    def get(self, request, slug, *args, **kwargs):
+    def get(self, request, slug):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
         comments = event.comments.filter(approved=True).order_by('created_on')
@@ -34,7 +34,7 @@ class EventDetail(View):
             },
         )
 
-    def post(self, request, slug, *args, **kwargs):
+    def post(self, request, slug):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
         comments = event.comments.filter(approved=True).order_by('created_on')
@@ -75,10 +75,26 @@ class PostAttend(View):
             event.attendees.remove(request.user)
         else:
             event.attendees.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('event_detail', args=[slug]))
 
 
 class AddEvent(View):
+
     def get(self, request):
-        return render(request, 'add_event.html')
+        event_form = EventForm(request.POST, request.FILES)
+        return render(request, 'add_event.html', {
+            'form': event_form, 'submitted': False
+            })
+
+    def post(self, request):
+        submitted = False
+        event_form = EventForm(request.POST, request.FILES)
+        if event_form.is_valid():
+            event_form.instance.author = request.user.username
+            event_form.save()
+            submitted = True
+
+        return render(request, 'add_event.html', {
+            'form': event_form, 'submitted': submitted
+            })
