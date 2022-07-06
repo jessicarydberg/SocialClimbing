@@ -11,11 +11,8 @@ class CommentForm(forms.ModelForm):
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ('author', 'title', 'date', 'location', 'content', 'excerpt')
+        fields = ('title', 'date', 'location', 'content', 'excerpt')
         widgets = {
-            'author': forms.Select(attrs={
-                'class': 'form-control', 'placeholder': 'Author'
-                }),
             'title': forms.TextInput(attrs={
                 'class': 'form-control', 'placeholder': 'Title'
                 }),

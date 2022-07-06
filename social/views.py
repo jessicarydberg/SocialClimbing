@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.db import models
 from .models import Event
 from .forms import CommentForm, EventForm
 from django.utils.text import slugify
@@ -92,7 +94,7 @@ class AddEvent(View):
         submitted = False
         event_form = EventForm(request.POST)
         if event_form.is_valid():
-            print(event_form)
+            event_form.instance.author = User.objects.get(username=request.user.username)
             event_form.instance.slug = slugify(event_form.instance.title)
             event_form.instance.status = 1
             event_form.save()
