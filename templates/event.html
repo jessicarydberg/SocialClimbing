@@ -98,6 +98,10 @@
                 <div class="alert alert-success" role="alert">
                     Your comment was submitted Successfully!!
                 </div>
+                {% elif commentfail %}
+                <div class="alert alert-warning" role="alert">
+                    Your comment was not submitted Successfully, try again!
+                </div>
                 {% endif %}
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>

@@ -13,7 +13,7 @@
                     Your Event Was Submitted Successfully!
                 </div>
                 {% else %}
-                <h3>Add an Event</h3>
+                <h3>Edit your event {{ event.title }}</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em" enctype= multipart/form-data>
                     {{ form }}

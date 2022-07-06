@@ -3,9 +3,9 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView, DeleteView
+from django.utils.text import slugify
 from .models import Event
 from .forms import CommentForm, EventForm
-from django.utils.text import slugify
 
 
 class EventList(generic.ListView):
@@ -54,7 +54,6 @@ class EventDetail(View):
             comment.save()
         else:
             comment_form = CommentForm()
-
         return render(
             request,
             "event.html",
@@ -66,6 +65,7 @@ class EventDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
 
 
 class PostAttend(View):
@@ -108,13 +108,15 @@ class DeleteEvent(DeleteView):
 
     model = Event
     template_name = 'delete_event.html'
+    deleted = True
     success_url = '/'
 
 
 class EditEvent(UpdateView):
-
+    
     model = Event
     form_class = EventForm
     template_name_suffix = '_edit_form'
     template_name = 'event_edit_form.html'
+    edited = True
     success_url = '/'
