@@ -38,7 +38,10 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Sign out</a>
+                        <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_event' %}">Add Event</a>
                     </li>
                     {% else %}
                     <li class="nav-item">

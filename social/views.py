@@ -78,3 +78,7 @@ class PostAttend(View):
         
         return HttpResponseRedirect(reverse('event_detail', args=[slug]))
 
+
+class AddEvent(View):
+    def get(self, request):
+        return render(request, 'add_event.html')
