@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load cloudinary %}
+
+{% block content %}
+
+<div class="container light-bg">
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3">
+            <div class="card-body">
+                <h5>Hi <strong>{{ event.author }}</strong>, are you sure you want to delete your event:<strong>{{ event.title }}</strong>?</h5>
+            <p>This cannot be undone.</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

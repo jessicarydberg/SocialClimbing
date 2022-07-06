@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ('title', 'date', 'location', 'content', 'excerpt')
+        fields = ('title', 'date', 'location', 'content', 'image')
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control', 'placeholder': 'Title'
@@ -23,11 +23,7 @@ class EventForm(forms.ModelForm):
                 'class': 'form-control', 'placeholder': 'Location',
                 }),
             'content': forms.Textarea(attrs={
-                'class': 'form-control', 'placeholder': 'Description',
+                'class': 'form-control', 'placeholder': 'Add all necessary information about the event here',
                 'max-width': '200px', 'max-heigth': '200px'
-                }),
-            'excerpt': forms.Textarea(attrs={
-                'class': 'form-control', 'placeholder': 'Excerpt',
-                'max-width': '50px', 'max-heigth': '100px'
                 }),
         }

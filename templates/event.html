@@ -110,6 +110,17 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                {% if request.user == event.author %}
+            <h5>Do you want to edit och delete your event?</h5>
+            <p><a href="#"><button
+                        class="btn btn-success"><i class="fa fa-edit"></i></button></i></a>
+                <a href="{% url 'delete_event' event.slug %}"><button class="btn btn-danger"><i
+                            class="fa fa-trash"></i></button></a></p>
+            {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 

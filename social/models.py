@@ -9,12 +9,11 @@ class Event(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events")
-    date = models.DateTimeField('Event Date')
-    content = models.TextField()
+    date = models.DateTimeField('Event Date and Time')
+    content = models.TextField('Description')
     location = models.CharField(max_length=120)
     attendees = models.ManyToManyField(User, related_name='event_attendees')
     image = CloudinaryField('image', default='placeholder', blank=True)
-    excerpt = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:

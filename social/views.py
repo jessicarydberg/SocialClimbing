@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from django.db import models
+from django.views.generic.edit import UpdateView, DeleteView
 from .models import Event
 from .forms import CommentForm, EventForm
 from django.utils.text import slugify
@@ -98,9 +98,23 @@ class AddEvent(View):
             event_form.instance.status = 1
             event_form.save()
             submitted = True
-        else:
-            print("Error")
 
         return render(request, 'add_event.html', {
             'form': event_form, 'submitted': submitted
             })
+
+
+class DeleteEvent(DeleteView):
+
+    model = Event
+    template_name = 'delete_event.html'
+    success_url = '/'
+
+
+class EditEvent(UpdateView):
+
+    model = Event
+    form_class = EventForm
+    template_name_suffix = '_update_form'
+    template_name = 'event_update_form.html'
+    success_url = '/'
