@@ -5,13 +5,13 @@
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h1 class="post-title">
                     {{ event.title }}
                 </h1>
                 <p class="post-subtitle"> {{ event.author }} | {{ event.date }} | {{ event.location }}</p>
             </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
+            <div class="d-none d-md-block col-md-4 masthead-image">
                 {% if 'placeholder' in event.image.url %}
                 <img src="/static/images/climber1.jpg" width="100%">
                 {% else %}
@@ -24,9 +24,9 @@
 
 <div class="container light-bg">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
+        <div class="col card mb-4 mt-3 left top">
             <div class="card-body">
-                <p class="card-text">{{ event.content | safe }}</p>
+                <p class="card-text col-md-8">{{ event.content | safe }}</p>
                 <div class="row">
                     <div class="col-1">
                         <strong>
@@ -36,13 +36,13 @@
                                {% if attended %}
 
                                 <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
-                                    <strong>Attending</strong>
+                                    <i class="fa-solid fa-user"></i>
                                 </button>
                                 
                                 {% else %}
                                 
                                 <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
-                                    Attend
+                                    <i class="fa-regular fa-user"></i>
                                 </button>
 
                                {% endif %}
@@ -97,10 +97,6 @@
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment was submitted Successfully!!
-                </div>
-                {% elif commentfail %}
-                <div class="alert alert-warning" role="alert">
-                    Your comment was not submitted Successfully, try again!
                 </div>
                 {% endif %}
                 <h3>Leave a comment:</h3>
