@@ -108,7 +108,7 @@ img {
 }
 
 .post-title {
-    margin-top: 20%;
+    margin-top: 12vh;
     margin-left: 5%;
 }
 
@@ -148,8 +148,4 @@ img {
     color: lightgray;
     background: transparent;
     border: none;
-}
-
-.errorlist {
-    display: none;
 }

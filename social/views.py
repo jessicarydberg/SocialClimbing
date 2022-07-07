@@ -82,7 +82,7 @@ class PostAttend(View):
 
 
 class AddEvent(View):
-
+    
     def get(self, request):
         event_form = EventForm()
         return render(request, 'add_event.html', {
@@ -90,17 +90,21 @@ class AddEvent(View):
             })
 
     def post(self, request):
-        submitted = False
+        error = False
         event_form = EventForm(request.POST, request.FILES)
         if event_form.is_valid():
             event_form.instance.author = User.objects.get(username=request.user.username)
             event_form.instance.slug = slugify(event_form.instance.title)
             event_form.instance.status = 1
             event_form.save()
+            error = False
             submitted = True
+        else:
+            submitted = False
+            error: True
 
         return render(request, 'add_event.html', {
-            'form': event_form, 'submitted': submitted
+            'form': event_form, 'submitted': submitted, 'error': error,
             })
 
 
