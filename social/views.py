@@ -95,7 +95,9 @@ class AddEvent(View):
         error = False
         event_form = EventForm(request.POST, request.FILES)
         if event_form.is_valid():
-            event_form.instance.author = User.objects.get(username=request.user.username)
+            event_form.instance.author = User.objects.get(
+                username=request.user.username
+                )
             event_form.instance.slug = slugify(event_form.instance.title)
             event_form.instance.status = 1
             event_form.save()

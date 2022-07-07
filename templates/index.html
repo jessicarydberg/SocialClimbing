@@ -14,7 +14,7 @@
                                 <div class="image-container">
                                     {% if "placeholder" in event.image.url %}
                                     <img class="card-img-top"
-                                    src="/static/images/climber1.jpg" width="85%">
+                                    src="{{ static 'images/climber1.jpg' }}" width="85%">
                                     {% else %}
                                     <img class="card-img-top" src="{{ event.image.url }}" width="85%">
                                     {% endif %}

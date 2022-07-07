@@ -9,7 +9,9 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Event(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="events"
+        )
     date = models.DateTimeField(default=timezone.now())
     content = models.TextField('Description')
     location = models.CharField(max_length=120)
@@ -28,7 +30,9 @@ class Event(models.Model):
 
 
 class Comment(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='comments')
+    event = models.ForeignKey(
+        Event, on_delete=models.CASCADE, related_name='comments'
+        )
     name = models.CharField(max_length=80)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
