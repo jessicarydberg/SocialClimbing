@@ -28,32 +28,10 @@
             <div class="card-body">
                 <p class="card-text col-md-6">{{ event.content | safe }}</p>
                 <div class="row">
-                    <div class="col-md-2col-xs-4">
-                        <strong>Attending</strong>
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'event_attendees' event.slug %}" method="POST">
-                               {% csrf_token %}
-                               {% if attended %}
-                                <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
-                                    <i class="fa-solid fa-user"></i>
-                                </button>
-                                {% else %}
-                                <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
-                                    <i class="fa-regular fa-user"></i>
-                                </button>
-                               {% endif %}
-                            </form>
-                            {% else %}
-
-                            <span>
-                                <i class="far fa-heart"></i>
-                            </span>
-                            {% endif %}
-                        </strong>
-                        <span>{{ event.number_of_attendees }}</span>
+                    <div class="col-md-1">
+                        <span><i class="fa-solid fa-user"></i>{{ event.number_of_attendees }}</span>
                     </div>
-                    <div class="col-1">
+                    <div class="col-md-1">
                         {% with comments.count as total_comments %}
                         <strong><i class="far fa-comments"></i>
                             {{ total_comments }}
@@ -70,7 +48,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 card mb-4  mt-3 ">
+        <div class="col-md-6 card mb-4 col-sm-10 mt-3 ">
             <h3>Comments:</h3>
             <div class="card-body">
                 {% for comment in comments %}
@@ -90,7 +68,22 @@
             <div class="card-body">
 
                 {% if user.is_authenticated %}
-
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'event_attendees' event.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if attended %}
+                        <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
+                            <p>Attended! <i class="fa-solid fa-check"></i></p>
+                        </button>
+                        {% else %}
+                        <button type="submit" name="event_id" value="{{ event.slug }}" class="btn-like">
+                            <p>Attend this event! <i class="fa-regular fa-user"></i></p>
+                        </button>
+                        {% endif %}
+                    </form>
+                    {% endif %}
+                </strong>
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment was submitted Successfully!!
