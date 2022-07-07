@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 {% block content %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 <div class="masthead">
@@ -14,7 +14,7 @@
             </div>
             <div class="d-none d-md-block col-md-4 masthead-image">
                 {% if 'placeholder' in event.image.url %}
-                <img src="/static/images/climber1.jpg" width="100%">
+                <img src="{% static 'images/climber1.jpg' %}" width="100%">
                 {% else %}
                 <img src="{{ event.image.url }}" width="100%">
                 {% endif %}
