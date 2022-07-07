@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils import timezone
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -9,7 +10,7 @@ class Event(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events")
-    date = models.DateTimeField('Event Date and Time')
+    date = models.DateTimeField(default=timezone.now())
     content = models.TextField('Description')
     location = models.CharField(max_length=120)
     attendees = models.ManyToManyField(User, related_name='event_attendees')

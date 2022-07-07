@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'social',
 ]
 
+USE_TZ = True
+
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
@@ -100,10 +102,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'socialclimbing.wsgi.application'
 
-
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# }
 
 
 # Password validation
