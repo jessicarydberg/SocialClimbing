@@ -6,11 +6,14 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.utils.text import slugify
 from .models import Event
 from .forms import CommentForm, EventForm
+from datetime import datetime
 
 
 class EventList(generic.ListView):
     model = Event
-    queryset = Event.objects.filter(status=1).order_by("date")
+    queryset = Event.objects.filter(status=1).exclude(
+        date__lt=datetime.today()
+        ).order_by("date")
     template_name = "index.html"
     paginate_by = 8
 

@@ -10,18 +10,18 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 col-lg-3">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in event.image.url %}
-                                <img class="card-img-top"
-                                    src="/static/images/climber1.jpg" width="85%">
-                                {% else %}
-                                <img class="card-img-top" src="{{ event.image.url }}" width="85%">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ event.author }}</p>
-                                </div>
-                            </div>
                             <a href="{% url 'event_detail' event.slug %}" class="post-link">
+                                <div class="image-container">
+                                    {% if "placeholder" in event.image.url %}
+                                    <img class="card-img-top"
+                                    src="/static/images/climber1.jpg" width="85%">
+                                    {% else %}
+                                    <img class="card-img-top" src="{{ event.image.url }}" width="85%">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="author">Author: {{ event.author }}</p>
+                                    </div>
+                                </div>
                                 <h2 class="card-title">{{ event.title }}</h2>
                                 <p class="card-text">{{ event.excerpt }}</p>
                                 <p class="card-text">Locaton: {{ event.location }}</p>
@@ -33,11 +33,10 @@
                         </div>
                     </div>
                 </div>
-            {% if forloop.counter|divisibleby:4 %}
+                {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class="row">
-            {% endif %}
-
+                {% endif %}
             {% endfor %}
             </div>
         </div>
