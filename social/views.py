@@ -70,7 +70,6 @@ class EventDetail(View):
         )
 
 
-
 class PostAttend(View):
 
     def post(self, request, slug):
@@ -85,7 +84,7 @@ class PostAttend(View):
 
 
 class AddEvent(View):
-    
+
     def get(self, request):
         event_form = EventForm()
         return render(request, 'add_event.html', {
@@ -120,7 +119,7 @@ class DeleteEvent(DeleteView):
 
 
 class EditEvent(UpdateView):
-    
+
     model = Event
     form_class = EventForm
     template_name_suffix = '_edit_form'
