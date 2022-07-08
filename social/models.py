@@ -12,7 +12,7 @@ class Event(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="events"
         )
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField()
     content = models.TextField('Description')
     location = models.CharField(max_length=120)
     attendees = models.ManyToManyField(User, related_name='event_attendees')
