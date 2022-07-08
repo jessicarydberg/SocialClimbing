@@ -1,10 +1,22 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![Cliff](static/images/cliff.jpg)
 
-Welcome jessicarydberg,
+# Social Climbing
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Welcome to my page Social Climbing. This is a website that gives climbers a way to socialise and plan events together.
+This is my 4:th project for my portfolio through Code Institutes course Fullstack Developer. [Read more](http://codeinstitute.com)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+On Social climbing you can view all upcoming events and if you register as a user you can log in and create your own events. While logged in you can also attend others events and comment on them.
+
+[View live project here](https://social-climbing.herokuapp.com/)
+
+![Home page](static/images/home-page.jpg)
+
+
+
+
+
+
+
 
 ## Gitpod Reminders
 

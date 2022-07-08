@@ -5,6 +5,7 @@ body {
 
 p {
     margin: 5px;
+    color: black;
 }
 
 a, .nav-link {
