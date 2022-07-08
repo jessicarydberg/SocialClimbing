@@ -67,10 +67,8 @@
         </div>
         <div class="col-md-6 card mb-4 mt-3 ">
             <div class="card-body">
-
                 {% if user.is_authenticated %}
                 <strong>
-                    {% if user.is_authenticated %}
                     <form class="d-inline" action="{% url 'event_attendees' event.slug %}" method="POST">
                         {% csrf_token %}
                         {% if attended %}
@@ -83,7 +81,7 @@
                         </button>
                         {% endif %}
                     </form>
-                    {% endif %}
+                {% endif %}
                 </strong>
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
