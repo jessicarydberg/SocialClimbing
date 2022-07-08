@@ -9,7 +9,7 @@ On Social climbing you can view all upcoming events and if you register as a use
 
 [View live project here](https://social-climbing.herokuapp.com/)
 
-![Home page](static/images/mockup.jpg)
+![Mockup](static/images/mockup.jpg)
 
 # User experience UX
 
@@ -35,4 +35,69 @@ On Social climbing you can view all upcoming events and if you register as a use
  ## Agile Methodology
  - I used Github for planning and working through this project. Please find my project on GitHub [here](https://github.com/jessicarydberg/SocialClimbing/projects/1)
 
+ #Features
+
+ ## Home page
+ The home page is what the user sees when first entering the site. Here it is possible to view all events that have the event date set to todays date or further in the future. The old events will automatically be filtered out.
+
+ At this page you can click on different links to get you further to other pages.
+
+ ![Home page](static/images/home-page.jpg)
+
+ ### Paginate on home page
+ If there are more than 8 events on the home page it will be paginated and arrows will show up at the bottom of the page the get you to the rest of the events.
+
+ ![paginate](static/images/paginate.jpg)
+
+ ## Admin page
+ The admin page is reached by adding /admin to the end of the site url. This site is only reachable by the administrator.
  
+ At this page the administrator can create events and comments, edit and delete it. It is also possible to search on events and comments and filter out the ones that are interesting
+
+ ![Admin page](static/images/admin-page.jpg)
+
+ ## Event page
+ This page is reached from home page by clicking on an event, either on the title or on the image.
+
+ Here it is possible to get more information about the event. Information on this page that is not on the home page is the content of the event and comments made. If the user is logged in it is also possible here to attend the event and leave comments. If the user is the author of the event it is also possible to delete and edit the event
+
+ ![Event page](static/images/event-page.jpg)
+
+ ## Register user
+ At the top of the home page navigation bar the user can click on "Register" and reach this page. Enter username and password to create a user.
+ 
+ ![Register user](static/images/register.jpg)
+
+ ## Sign in
+At the top of the home page navigation bar the user can click on "Sign in" and reach this page. If you have created a user this is where you login.
+
+ ![Sign in](static/images/sign-in.jpg)
+
+ ## Sign out
+If the user is loged in then the "Sign out" link will show at the top of the home page navigation bar. This is where you Sign out.
+
+ ![Sign out](static/images/sign-out.jpg)
+
+ ## Add event
+ If the user is loged in the link "Add event" will show at the top of the home page navigation bar. If this link is clicked then this page is reached.
+
+ Here the logged in user will reach a form where they can add an event. The form will not be valid if the title, date, location and content isnt filled in. The date field must be in the right format and to help the user they will be provided a date and time picker. At the bottom the user can add a custom image for the event. If they dont choose an image a default image will be provided.
+
+ ![Add event](static/images/add-event.jpg)
+
+ ## Attend event
+ For the logged in user at the event page it is possible to attend the event clicking on the button "Attend this event!". It is also possible to click again to not attend.
+
+ ![Attend](static/images/attend-event.jpg)
+
+ ## Comment event
+ For the logged in user at the event page it is possible to comment at the event using the form provided.
+
+ ![Comment](static/images/comment-event.jpg)
+
+ ## Edit and delete event
+ At the event page it is possible to edit and delete event if the user is the same as the author of the displayed event. Clicking the edit button will get you to a form where you can edit the event. Clicking the delete button will get you to a page that warns you and asks you if you are sure you want to delete and then you need to click on delete again.
+
+ ![Edit and delete event](static/images/edit-delete-event.jpg)
+ ![Edit event](static/images/edit-event.jpg)
+ ![Delete event](static/images/delete-event.jpg)
